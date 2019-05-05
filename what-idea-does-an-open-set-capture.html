@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<html><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139594119-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-139594119-1');
+        </script>
+        </head></html>
+<title>What idea does an open set capture?</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet" charset="utf-8">
+<link href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" rel="stylesheet" charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" charset="utf-8"></script><link href="post.css" rel="stylesheet" charset="utf-8">
+<script src="post.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="control"><a href="/"><i class="fas fa-home"></i> home</a></div>
+<h1 class="title">What idea does an open set capture?</h1>
+<div class="doc">
+        <p>
+            A topology defines what subsets are <i>open sets</i> in a space. Assuming we have topological space <span class="math">(X, \scrT)</span>, the topology <span class="math">\scrT</span> needs to satisfy three axioms below:
+        </p>
+
+        <ul>
+            <li>
+<span class="math">\varnothing</span> is an open set, and <span class="math">X</span> is an open set.</li>
+            <li>Assuming <span class="math">\set{U_i}</span> is a family of <b>arbitrary</b> number of open sets, then <span class="math">\bigcup \set{U_i}</span> is an open set.</li>
+            <li>Assuming <span class="math">\set{U_i}</span> is a family of <b>finite</b> number of open sets, then <span class="math">\bigcap \set{U_i}</span> is an open set.</li>
+        </ul>
+
+        <p>
+            These axioms feel quite enigmatic if not completely arbitrary. Some people draw an analogy between an open set and an open ball in metric space, where an open ball <span class="math">B_r(p)</span> means a region close enough to a certain point <span class="math">p</span>, with distance less than <span class="math">r</span>. To see some problems in this interpretation, consider a disconnected open set like <span class="math">(0, 1) \cup (100, 101)</span>. We will find that it contains points that are far away from each other; More importantly, this interpretation doesn't distinguish between open sets and <i>closed sets</i> well, since closed sets like <span class="math">[0, 1]</span> can also be considered as a region close to a point. Not to metion that this interpretion doesn't explain arbitrary union versus finite intersection at all. The goal of this article is to present a hopefully more satisfactory explanation on open sets.
+        </p>
+
+        <h2>The idea of boundary</h2>
+
+        <p>
+            When we are dealing with plain sets, we are given a clear-cut set membership relation - either in the set or not in the set. However, we will see that with the additional structure of a topology, things stop to behave in a binary way. The new relation allows some fuzziness, that is neither being strictly inside nor strictly outside. This is the idea of <i>boundary</i>.
+        </p>
+
+        <p>
+            To define boundary, we need to first define other concepts. A closed set is a complement of an open set, that is, if <span class="math">S \subseteq X</span> is an open set, then <span class="math">X - S</span> is a closed set. Because of this duality, we can also formulate topology by closed sets using <a href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws">De Morgan's laws</a>. Thus a topology is a collection of closed sets that are closed under <b>arbitrary intersection</b> and <b>finite union</b>.
+        </p>
+
+        <p>
+            The <i>interior</i> of a set <span class="math">S</span> is defined to be the union of all open sets contained in <span class="math">S</span>, denoted as <span class="math">\inter{S}</span>. The <i>closure</i> of a set is defined to be the intersection of all closed sets that contain <span class="math">S</span>, denoted as <span class="math">\cl{S}</span>. Because arbitrary union of open sets results in an open set, and arbitrary intersection of closed sets results in a closed set, what we actually defined is <span class="math">\inter{S}</span> as the largest open set contained in <span class="math">S</span>, and <span class="math">\cl{S}</span> as the smallest closed set that contains <span class="math">S</span>. That is to say, the <span class="math">\inter{S}</span> and <span class="math">\cl{S}</span> together form the tightest bound around set <span class="math">S</span>. What is sandwiched between is defined to be the boundary, denoted as <span class="math">\bound{S} = \cl{S} - \inter{S}</span>.
+        </p>
+
+        <div class="row">
+            <div class="image">
+<img src="topology-boundary.png">
+                <p class="image-cap">The dotted line illustrates the set <span class="math">S</span> under consideration. It is bounded by its interior <span class="math">\inter{S}</span> and closure <span class="math">\cl{S}</span>, and the area between them is the boundary <span class="math">\bound{S}</span>.</p>
+            </div>
+        </div>
+
+        <p>
+            Points in boundary are hard to say if they belong to the set or not belong to the set, this is contrary to the set membership. Take a set <span class="math">S = [0, 1)</span> where both <span class="math">0</span> and <span class="math">1</span> are the boundary points. Although by set membership we know for sure that <span class="math">0 \in S</span> and <span class="math">1 \not\in S</span>, however we cannot say anything assertive about membership of <span class="math">0</span> and <span class="math">1</span> in the topological sense.
+        </p>
+
+        <p>
+            Let's consider the property of redness in the space of colors. Scarlet is pretty red, crimson is also quite red. Ruby is less red, salmon and maroon are probably even less. Going a bit further we get colors like pink, orange and purple that might be the last colors that can still be seen as 'red'. Beyond those, colors like blue and green should never be considered as red. Thus we see this gradient of confidence in redness, from definitely being red, to still possibly being red (or not red), to never being red. We can easily see the analogy here. The interior contains colors that are definitely red, the closure contains color that are possibly red, therefore the boundary points are the colors in doubt.
+        </p>
+
+        <p>
+            An open set is a region that contains no boundary points, thus when we find a point in the set by set membership, we can be sure that the point is in the region, since it cannot be a boundary point. For example, being in the open set of redness means the color is definitely red. However, not being in the set doesn't necessarily means not in the region, since the complement is a closed set and it contains all the boundary points in doubt. In the color example, not definitely being red doesn't necessarily mean it is not red, it might be salmon or maroon that can still possibly be considered red.
+        </p>
+
+        <p>
+            Note the clopen sets (sets that are both open and closed) are the sets without boundary, hence no points in doubt. By the above analogy, a clopen set might correpond to some exact region without fuzziness like colors whose hue in HSV representation is within certain range. A different topology, however, might say this region still has uncertain boundary since what happens on the boundary of the range values?
+        </p>
+
+        <p>
+            In summary, open set gives us a language to talk about fuzzy membership like 'definitely in' or 'definitely not in'. A collection of open sets thus gives us a toolbox of positive assertions that we can know for sure about the topological membership in the space.
+        </p>
+
+        <h2>Reasons behind open set axioms</h2>
+
+        <p>
+            After knowing what idea an open set is trying to convey, let's have a look at why the axioms of open sets are reasonable. Recall that open sets represent regions such that if a point is in the set, then we know it is definitely in the region. When we are asked if a point is in the region, being in the open set can be seen as a proof for the positive answer, whereas a non-open set cannot serve as a proof, because the existence of boundary points doesn't allow us to state positive answer assertively.
+        </p>
+
+        <p>
+            Now consider the union of a collection of open sets <span class="math">\set{U_i}</span>. We want to know if the union is an open set, the same question is can we know if a point is in the union region without doubt? We can do that because we can provide one known open set <span class="math">U_i</span> to serve as the proof that the point is indeed in the region. It is fine that we don't know which <span class="math">U_i</span> contains the test point, the important bit is that we can indeed find such an open set, and more importantly we only need <b>one</b> such open set.
+        </p>
+
+        <p>
+            For the case of intersection, things are a bit different. In order to know something is in the intersection region without doubt, we have to show the proof of being in individual region without doubt for every region. When there are infinite number of open sets in the collection, we would need <b>infinitely</b> long proofs. And this is prohibited in logical reasoning - we can reason about infinite things, but we cannot reason for infinitely long. This infinity effectively becomes a new type of boundary point that traps our positive assertion.
+        </p>
+
+        <p>
+            We can easily see why empty set and the entire space are both open sets. Empty set doesn't allow us to say anything assertively, thus it is an open set vacuously. Any point in the topological space definitely belongs to the space, since that is the entire universe under discussion, therefore the entire space is also an open set.
+        </p>
+
+        <p>
+            Hopefully these arguments make open set axioms a bit more reasonable. A lot of these ideas come from the first few chapters of the book 'Topology via Logic' by Steven Vickers, check it out if you are interested.
+        </p>
+    </div>
+<hr class="doc-end">
+<p class="date">Written on 2019-04-21</p>
+</body>
+</html>

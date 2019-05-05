@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+@import url("https://fonts.googleapis.com/css?family=Vollkorn");
+
+* {
+  margin: 0;
+  padding: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Vollkorn", serif;
+  font-size: 16px;
+  color: black;
+  margin: 2em auto;
+  padding: 0 1em;
+  max-width: 1000px;
+}
+
+a,
+a:hover,
+a:visited {
+  color: black;
+}
+
+.post {
+  margin: 2em 0 0 0;
+}
+
+.post > a {
+  font-family: "Playfair Display", serif;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.post > p {
+    margin: 0.5em 0 0 0;
+}
